@@ -4,7 +4,7 @@
   "description": "A personality quiz built with **Vanilla JavaScript + ES6** that matches you to a Pokémon based on your traits.",
   "main": "app.js",
   "scripts": {
-    "minify": "esbuild app.js --minify --outfile=app.min.js && esbuild data.js --minify --outfile=data.min.js && esbuild data2.js --minify --outfile=data2.min.js",
+    "minify": "esbuild app.js --minify --outfile=app.min.js && esbuild data.js --minify --outfile=data.min.js && esbuild data2.js --minify --outfile=data2.min.js && esbuild styles.css --minify --outfile=styles.min.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
