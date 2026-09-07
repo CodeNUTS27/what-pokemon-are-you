@@ -63,87 +63,12 @@ function showResult() {
     })
   }
 
-  //Score those pokemon based on the trait-to-trait mapping
-  const typeTraitMap = {
-    Fire: {
-      Extraversion: 2,
-      Openness: 2,
-      Conscientiousness: 0,
-      Agreeableness: 0,
-      Neuroticism: -1,
-    },
-    Water: {
-      Extraversion: 1,
-      Openness: 0,
-      Conscientiousness: 0,
-      Agreeableness: 1,
-      Neuroticism: -1,
-    },
-    Electric: {
-      Extraversion: 2,
-      Openness: 2,
-      Conscientiousness: 0,
-      Agreeableness: 0,
-      Neuroticism: 0,
-    },
-    Grass: {
-      Extraversion: 0,
-      Openness: 0,
-      Conscientiousness: 1,
-      Agreeableness: 2,
-      Neuroticism: 0,
-    },
-    Normal: {
-      Extraversion: 1,
-      Openness: 0,
-      Conscientiousness: 1,
-      Agreeableness: 1,
-      Neuroticism: 0,
-    },
-    Psychic: {
-      Extraversion: 0,
-      Openness: 2,
-      Conscientiousness: 2,
-      Agreeableness: 0,
-      Neuroticism: 0,
-    },
-    Dark: {
-      Extraversion: 0,
-      Openness: 1,
-      Conscientiousness: 0,
-      Agreeableness: -1,
-      Neuroticism: -1,
-    },
-    Fighting: {
-      Extraversion: 1,
-      Openness: 0,
-      Conscientiousness: 1,
-      Agreeableness: -1,
-      Neuroticism: 0,
-    },
-    Bug: {
-      Extraversion: 0,
-      Openness: 1,
-      Conscientiousness: 2,
-      Agreeableness: 0,
-      Neuroticism: 0,
-    },
-    Rock: {
-      Extraversion: 0,
-      Openness: 0,
-      Conscientiousness: 2,
-      Agreeableness: 0,
-      Neuroticism: 0,
-    },
-  }
-
-  //Score each pokemon
   allPokemon.forEach((pokemon) => {
     pokemon.score = 0
-    const typeTraits = typeTraitMap[pokemon.type]
+    const weights = pokemon.traitWeights // Use individual weights
 
     for (let trait in traitScores) {
-      pokemon.score += traitScores[trait] * typeTraits[trait]
+      pokemon.score += traitScores[trait] * weights[trait]
     }
   })
 
