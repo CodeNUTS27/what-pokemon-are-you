@@ -1,5 +1,5 @@
-import { quizData } from './data.js'
-import { quizData2 } from './data2.js'
+// import { quizData } from './data.js'
+import { quizData2 } from './data2.min.js'
 
 //logs
 // console.log(quizData2.questions[0]) //first question
