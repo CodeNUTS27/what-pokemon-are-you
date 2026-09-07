@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+}
+
+/* Landing Page Styles */
+#landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.landing-title {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 20px;
+  animation: slideDown 0.6s ease-out;
+}
+
+.landing-description {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 500px;
+  animation: slideUp 0.6s ease-out 0.2s both;
+}
+
+.start-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: slideUp 0.6s ease-out 0.4s both;
+}
+
+.start-btn:hover {
+  background: #764ba2;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.start-btn:active {
+  transform: translateY(0);
+}
+
+.emoji-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+/* Quiz Styles */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+#quiz-container {
+  display: none;
+}
+
+#result-container {
+  display: none;
+  text-align: center;
+}
+
+.question-number {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.answer-btn {
+  padding: 15px 20px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.answer-btn:hover {
+  border-color: #667eea;
+  background: #f0f4ff;
+}
+
+.answer-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.result-pokemon {
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+}
+
+.pokemon-image {
+  width: 200px;
+  height: 200px;
+  margin: 20px auto;
+  animation: slideDown 0.6s ease-out;
+}
+
+.pokemon-name {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+}
+
+.pokedex-number {
+  color: #999;
+  font-size: 14px;
+}
+
+.pokemon-description {
+  font-size: 16px;
+  color: #555;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+.pokemon-nature {
+  font-size: 16px;
+  color: #667eea;
+  margin: 20px 0;
+  line-height: 1.5;
+  font-style: italic;
+  background: #f0f4ff;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.trait-scores {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+.trait-score {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.trait-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.trait-value {
+  font-size: 24px;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.restart-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.restart-btn:hover {
+  background: #764ba2;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}

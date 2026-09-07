@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Pokémon Are You?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+   
+    <div class="container">
+      
+ <!-- Landing Page -->
+      <div id="landing-container">
+        <div id="emoji-icon">
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokéball" style="width: 80px; height: 80px;">
+</div>
+        <h1>What Pokémon Are You?</h1>
+        <p class="landing-description">
+          Answer 10 simple questions about your personality and discover which Pokémon matches your true nature. 
+        Are you ready? Let's find out!
+        </p>
+        <button class="start-btn" id="start-btn">Start Quiz</button>
+      </div>
+        
+      <!-- Quiz Page -->
+    
+      <div id="quiz-container" style="display: none;">
+        <h1>What Pokémon Are You?</h1>
+        <div class="question-number" id="question-number"></div>
+        <div class="question-text" id="question-text"></div>
+        <div class="answers" id="answers"></div>
+      </div>
+ <!-- Result -->
+      <div id="result-container" style="display: none;"">
+        <div class="result-pokemon">
+          <img id="pokemon-image" class="pokemon-image" src="" alt="Pokémon" />
+          <div class="pokedex-number" id="pokedex-number"></div>
+          <div class="pokemon-name" id="pokemon-name"></div>
+          <div class="pokemon-description" id="pokemon-description"></div>
+          <div class="pokemon-nature" id="pokemon-nature"></div>
+
+          <div class="trait-scores" id="trait-scores"></div>
+
+          <button class="restart-btn" id="restart-btn">Take Quiz Again</button>
+        </div>
+      </div>
+    </div>
+      </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
