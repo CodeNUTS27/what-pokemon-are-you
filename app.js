@@ -1,4 +1,3 @@
-// import { quizData } from './data.js'
 import { quizData2 } from './data2.min.js'
 
 //logs
