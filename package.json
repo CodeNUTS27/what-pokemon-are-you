@@ -1,0 +1,25 @@
+{
+  "name": "pokemon-quiz",
+  "version": "1.0.0",
+  "description": "A personality quiz built with **Vanilla JavaScript + ES6** that matches you to a Pokémon based on your traits.",
+  "main": "app.js",
+  "scripts": {
+    "minify": "terser app.js -o app.min.js && terser data.js -o data.min.js && terser data2.js -o data2.min.js && csso styles.css -o styles.min.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeNUTS27/what-pokemon-are-you.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeNUTS27/what-pokemon-are-you/issues"
+  },
+  "homepage": "https://github.com/CodeNUTS27/what-pokemon-are-you#readme",
+  "devDependencies": {
+    "csso-cli": "^4.0.2",
+    "terser": "^5.51.2"
+  }
+}

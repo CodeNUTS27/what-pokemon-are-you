@@ -1,20 +1,22 @@
 import { quizData } from './data.js'
+import { quizData2 } from './data2.js'
 
 //logs
-console.log(quizData.questions[0]) //first question
-console.log(quizData.results.Brave) //first question
+// console.log(quizData2.questions[0]) //first question
+// console.log(quizData2.results.Brave) //first question
 
 let currentQuestionIndex = 0
 let traitScores = {
-  Brave: 0,
-  Calm: 0,
-  Clever: 0,
-  Playful: 0,
+  Openness: 0,
+  Conscientiousness: 0,
+  Extraversion: 0,
+  Agreeableness: 0,
+  Neuroticism: 0,
 }
 
 function displayTheQuestions() {
   //get the current question using the index
-  const currentQuestion = quizData.questions[currentQuestionIndex]
+  const currentQuestion = quizData2.questions[currentQuestionIndex]
 
   //get the HTML elements that we need to fill
   const questionElement = document.getElementById('question-text')
@@ -34,10 +36,10 @@ function displayTheQuestions() {
 
     //when clicked, do something
     button.addEventListener('click', () => {
-      console.log('clicked answer:', answer.text)
+      // console.log('clicked answer:', answer.text)
       handleAnswerClick(answer.trait)
       //log the clicked answer text
-      console.log('trait', answer.trait) //log the trait of the clicked answer
+      // console.log('trait', answer.trait) //log the trait of the clicked answer
     })
 
     //add the button the container
@@ -46,13 +48,113 @@ function displayTheQuestions() {
 
   const questionNumberElement = currentQuestionIndex + 1
   document.getElementById('question-number').textContent =
-    `Question ${questionNumberElement} of ${quizData.questions.length}`
+    `Question ${questionNumberElement} of ${quizData2.questions.length}`
 }
 
 function showResult() {
   //hide the quiz, and show the result scren
   document.getElementById('quiz-container').style.display = 'none'
   document.getElementById('result-container').style.display = 'block'
+
+  //Flatten all the pokemon into a single array with their type
+  let allPokemon = []
+  for (let type in quizData2.results) {
+    quizData2.results[type].forEach((pokemon) => {
+      allPokemon.push({ ...pokemon, type: type })
+    })
+  }
+
+  //Score those pokemon based on the trait-to-trait mapping
+  const typeTraitMap = {
+    Fire: {
+      Extraversion: 2,
+      Openness: 2,
+      Conscientiousness: 0,
+      Agreeableness: 0,
+      Neuroticism: -1,
+    },
+    Water: {
+      Extraversion: 1,
+      Openness: 0,
+      Conscientiousness: 0,
+      Agreeableness: 1,
+      Neuroticism: -1,
+    },
+    Electric: {
+      Extraversion: 2,
+      Openness: 2,
+      Conscientiousness: 0,
+      Agreeableness: 0,
+      Neuroticism: 0,
+    },
+    Grass: {
+      Extraversion: 0,
+      Openness: 0,
+      Conscientiousness: 1,
+      Agreeableness: 2,
+      Neuroticism: 0,
+    },
+    Normal: {
+      Extraversion: 1,
+      Openness: 0,
+      Conscientiousness: 1,
+      Agreeableness: 1,
+      Neuroticism: 0,
+    },
+    Psychic: {
+      Extraversion: 0,
+      Openness: 2,
+      Conscientiousness: 2,
+      Agreeableness: 0,
+      Neuroticism: 0,
+    },
+    Dark: {
+      Extraversion: 0,
+      Openness: 1,
+      Conscientiousness: 0,
+      Agreeableness: -1,
+      Neuroticism: -1,
+    },
+    Fighting: {
+      Extraversion: 1,
+      Openness: 0,
+      Conscientiousness: 1,
+      Agreeableness: -1,
+      Neuroticism: 0,
+    },
+    Bug: {
+      Extraversion: 0,
+      Openness: 1,
+      Conscientiousness: 2,
+      Agreeableness: 0,
+      Neuroticism: 0,
+    },
+    Rock: {
+      Extraversion: 0,
+      Openness: 0,
+      Conscientiousness: 2,
+      Agreeableness: 0,
+      Neuroticism: 0,
+    },
+  }
+
+  //Score each pokemon
+  allPokemon.forEach((pokemon) => {
+    pokemon.score = 0
+    const typeTraits = typeTraitMap[pokemon.type]
+
+    for (let trait in traitScores) {
+      pokemon.score += traitScores[trait] * typeTraits[trait]
+    }
+  })
+
+  //find the highest scoring pokemon
+  let resultPokemon = allPokemon[0]
+  for (let i = 1; i < allPokemon.length; i++) {
+    if (allPokemon[i].score > resultPokemon.score) {
+      resultPokemon = allPokemon[i]
+    }
+  }
 
   //find which trait has the highest score
   let highestTrait = ''
@@ -65,13 +167,6 @@ function showResult() {
       highestTrait = trait
     }
   }
-
-  //get all Pokémon for that trait
-  const pokemonList = quizData.results[highestTrait]
-
-  //pick a random Pokémon from the list
-  const randomIndex = Math.floor(Math.random() * pokemonList.length)
-  const resultPokemon = pokemonList[randomIndex]
 
   //display the result Pokémon
   document.getElementById('pokemon-name').textContent = resultPokemon.name
@@ -111,7 +206,7 @@ function handleAnswerClick(trait) {
   currentQuestionIndex += 1
 
   //check if we are done with the quiz
-  if (currentQuestionIndex < quizData.questions.length) {
+  if (currentQuestionIndex < quizData2.questions.length) {
     displayTheQuestions()
   } else {
     //quiz is done, and show the result
@@ -125,10 +220,11 @@ document.getElementById('restart-btn').addEventListener('click', () => {
   //Reset everything
   currentQuestionIndex = 0
   traitScores = {
-    Brave: 0,
-    Calm: 0,
-    Clever: 0,
-    Playful: 0,
+    Openness: 0,
+    Conscientiousness: 0,
+    Extraversion: 0,
+    Agreeableness: 0,
+    Neuroticism: 0,
   }
 
   document.getElementById('result-container').style.display = 'none'
